@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+
+@model GestEcole.Web.Models.School.SchoolViewModel
+
+<h2 class="page-header">Gestion d'écoles</h2>
+
+@using (Html.BeginForm("Create", "School", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.SchoolName)
+        @Html.TextBoxFor(m => m.SchoolName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.SchoolName)
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Location)
+        @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Location)
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.PostalCode)
+        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PostalCode)
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(m => m.City)
+        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.City)
+    </div>
+    <br/>
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span>&nbsp;Valider</button>
+}

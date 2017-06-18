@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@model List<GestEcole.Web.Models.School.SchoolViewModel>
+
+<br />
+<a href="/School/Add">Nouvelle école</a>
+<br />
+
+<h2>Liste des écoles</h2>
+
+@if (!Model.Any())
+{
+    <h4 class="text-center">Aucune école n'a été trouvée</h4>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var school in Model)
+            {
+                <tr>
+                    <td>@school.SchoolName</td>
+                    <td>@school.Location</td>
+                    <td>@school.PostalCode</td>
+                    <td>@school.City</td>
+                    <td>@Html.ActionLink("Modification", "Add", new { id = school.Id })</td>
+                    <td>@Html.ActionLink("Supprimer", "Delete", new { id = school.Id })</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
